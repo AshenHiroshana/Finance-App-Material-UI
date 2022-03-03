@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance App", "Finance App\Finance App.csproj", "{717EF266-A3CE-4809-808E-4B32F967BED6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finance App", "Finance App\Finance App.csproj", "{717EF266-A3CE-4809-808E-4B32F967BED6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "personal financial management app class libbey", "..\..\personal financial management app class libbey\personal financial management app class libbey\personal financial management app class libbey.csproj", "{F4613F7E-9765-410C-81E8-2EA599D9DD68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{717EF266-A3CE-4809-808E-4B32F967BED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{717EF266-A3CE-4809-808E-4B32F967BED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{717EF266-A3CE-4809-808E-4B32F967BED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4613F7E-9765-410C-81E8-2EA599D9DD68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4613F7E-9765-410C-81E8-2EA599D9DD68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4613F7E-9765-410C-81E8-2EA599D9DD68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4613F7E-9765-410C-81E8-2EA599D9DD68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

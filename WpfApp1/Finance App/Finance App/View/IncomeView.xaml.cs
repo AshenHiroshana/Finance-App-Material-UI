@@ -1,4 +1,5 @@
-﻿using System;
+﻿using personal_financial_management_app_class_libbey;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,19 +23,60 @@ namespace Finance_App.View
     {
         public IncomeView()
         {
+          
+            Catagory catagory1 = new Catagory();
+            catagory1.Name = "Salary";
 
-            List<List<int>> lsts = new List<List<int>>();
+            Catagory catagory2 = new Catagory();
+            catagory2.Name = "Interest";
 
-            for (int i = 0; i < 5; i++)
+            List<Catagory> catagories1 = new List<Catagory>();
+            catagories1.Add(catagory1);
+            catagories1.Add(catagory2);
+
+            List<Catagory> catagories2 = new List<Catagory>();
+            catagories2.Add(catagory1);
+            catagories2.Add(catagory2);
+
+
+
+            
+           
+
+
+            List<Catagory> cat = new List<Catagory>();
+            cat.Add(catagory1);
+            cat.Add(catagory2);
+
+            List<Button> x = new List<Button>();
+
+            for (int i = 0; i < cat.Count; i++)
             {
-                lsts.Add(new List<int>());
+                Button button = new Button();
+                button.Content = cat[i].Name;
+                x.Add(button);
 
-                for (int j = 0; j < 2; j++)
-                {
-                    lsts[i].Add(i * 10 + j);
-                }
+
             }
 
+            List<List<Button>> lsts = new List<List<Button>>();
+            lsts.Add(x);
+            lsts.Add(x);
+
+            /* List<List<int>> lsts = new List<List<int>>();
+
+
+
+             for (int i = 0; i < 5; i++)
+             {
+                 lsts.Add(new List<int>());
+
+                 for (int j = 0; j < 2; j++)
+                 {
+                     lsts[i].Add(i * 10 + j);
+                 }
+             }
+ */
             InitializeComponent();
 
             lst.ItemsSource = lsts;

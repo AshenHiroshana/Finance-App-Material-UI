@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "personal financial management app class libbey", "personal financial management app class libbey\personal financial management app class libbey.csproj", "{348B73B5-73B0-4251-8284-71559CA9397F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{348B73B5-73B0-4251-8284-71559CA9397F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{348B73B5-73B0-4251-8284-71559CA9397F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{348B73B5-73B0-4251-8284-71559CA9397F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{348B73B5-73B0-4251-8284-71559CA9397F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E64D663-9E2B-4FA2-AD48-7B5DEBB3C2DF}
+	EndGlobalSection
+EndGlobal
