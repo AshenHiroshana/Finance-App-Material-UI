@@ -23,25 +23,17 @@ namespace Finance_App.View
     {
         public IncomeView()
         {
-          
+
+
+            InitializeComponent();
+
+
+
             Catagory catagory1 = new Catagory();
             catagory1.Name = "Salary";
 
             Catagory catagory2 = new Catagory();
             catagory2.Name = "Interest";
-
-            List<Catagory> catagories1 = new List<Catagory>();
-            catagories1.Add(catagory1);
-            catagories1.Add(catagory2);
-
-            List<Catagory> catagories2 = new List<Catagory>();
-            catagories2.Add(catagory1);
-            catagories2.Add(catagory2);
-
-
-
-            
-           
 
 
             List<Catagory> cat = new List<Catagory>();
@@ -54,35 +46,35 @@ namespace Finance_App.View
             {
                 Button button = new Button();
                 button.Content = cat[i].Name;
-                x.Add(button);
+                Style? style = this.FindResource("MaterialDesignOutlinedButton") as Style;
+                button.Style = style;
+                button.Height = 50;
+                button.Width = 250;
+                button.HorizontalAlignment = HorizontalAlignment.Left;
+                //button.Padding = new Thickness(0,0,10,0);
 
+                StackPanel stackPanel = new StackPanel();
+                stackPanel.Orientation = Orientation.Horizontal;
+                //stackPanel.Margin = new Thickness(0);
+
+                MaterialDesignThemes.Wpf.PackIcon packIcon = new MaterialDesignThemes.Wpf.PackIcon{ Kind = MaterialDesignThemes.Wpf.PackIconKind.Package };
+                packIcon.Width = 20;
+                packIcon.Height = 20;
+                packIcon.VerticalAlignment = VerticalAlignment.Center;
+                packIcon.HorizontalAlignment = HorizontalAlignment.Center;
+                stackPanel.Children.Add(packIcon);
+
+                TextBlock textBlock = new TextBlock();  
+                textBlock.Text = cat[i].Name;
+                textBlock.Margin = new Thickness(10, 0, 0, 0);
+                stackPanel.Children.Add(textBlock);
+
+                button.Content = stackPanel;
+
+                button.SetValue(Grid.RowProperty, i);
+                CatagoryList.Children.Add(button);
 
             }
-
-            List<List<Button>> lsts = new List<List<Button>>();
-            lsts.Add(x);
-            lsts.Add(x);
-
-            /* List<List<int>> lsts = new List<List<int>>();
-
-
-
-             for (int i = 0; i < 5; i++)
-             {
-                 lsts.Add(new List<int>());
-
-                 for (int j = 0; j < 2; j++)
-                 {
-                     lsts[i].Add(i * 10 + j);
-                 }
-             }
- */
-            InitializeComponent();
-
-            lst.ItemsSource = lsts;
-            
-
-
 
 
         }

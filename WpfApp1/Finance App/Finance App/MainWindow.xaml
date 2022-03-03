@@ -14,24 +14,6 @@
         MouseLeftButtonDown="dragMe" >
 
 
-    <Window.Resources>
-        <DataTemplate x:Key="DataTemplate_Level2">
-            <Button Content="{Binding}" Height="40" Width="215" Margin="4,4,4,4"/>
-        </DataTemplate>
-
-        <DataTemplate x:Key="DataTemplate_Level1">
-            <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate_Level2}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </DataTemplate>
-
-    </Window.Resources>
-
-
     <Grid>
         <materialDesign:Card Margin="10" UniformCornerRadius="15" Background="#fefefe">
 

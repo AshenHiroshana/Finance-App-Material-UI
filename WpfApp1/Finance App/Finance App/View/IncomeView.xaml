@@ -72,7 +72,28 @@
                        >
                     Next
                 </Button>
+
+                <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#5cb85c"
+                        Foreground="#5cb85c"
+                        Height="50"
+                        Width="180"
+                        HorizontalAlignment="Left"
+                        Grid.Row="4"
+                        Padding="0 0 10 0"
+                       >
+                   <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0 0">
+                    <materialDesign:PackIcon Kind="Lightbulb" 
+                                             Width="20" Height="20" 
+                                             Foreground="Green" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                    <TextBlock  Text="Send Feedback" Margin="0 10"/>
+                </StackPanel>
+                </Button>
+
                 
+
             </Grid>
 
             <Grid Margin="0 20 0 0" Visibility="Hidden" Name="IncomeForm2">
@@ -83,8 +104,16 @@
                 </Grid.RowDefinitions>
 
                 <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
-                    <Grid >
-                        <ItemsControl x:Name="lst" ItemTemplate="{DynamicResource DataTemplate_Level1}"/>
+                    <Grid x:Name="CatagoryList">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                     
+                        
                     </Grid>
                 </ScrollViewer>
 
