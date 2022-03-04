@@ -26,20 +26,30 @@
                 </Grid.RowDefinitions>
            
                 <StackPanel Grid.Row="0" Margin="20 0">
-                    <TextBox materialDesign:HintAssist.Hint="Hey, that's pretty good!"
+                    <TextBox materialDesign:HintAssist.Hint="Enter Income"
+                             materialDesign:ValidationAssist.PopupPlacement="Center"
                              Style="{StaticResource MaterialDesignOutlinedTextBox}" 
-                             FontSize="15"/>
+                             FontSize="15"
+                             x:Name="txtIncomeDescription"
+                             />
                 </StackPanel>
-                <StackPanel Grid.Row="1" Margin="20 0">
-                    <TextBox materialDesign:HintAssist.Hint="Hey, that's pretty good!"
+                <StackPanel  Grid.Row="1" Margin="20 0">
+                    <TextBox materialDesign:HintAssist.Hint="Enter Amount"
                              Style="{StaticResource MaterialDesignOutlinedTextBox}" 
-                             FontSize="15"/>
+                             FontSize="15"
+                             Name="txtIncomeAmount"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="2" Margin="20 0">
-                    <TextBox materialDesign:HintAssist.Hint="Hey, that's pretty good!"
-                             Style="{StaticResource MaterialDesignOutlinedTextBox}" 
-                             FontSize="15"/>
+                    <DatePicker 
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+                         materialDesign:HintAssist.Hint="Select a Date"
+                         FontSize="15"
+                        Name="txtIncomeDate"
+                        >
+                        
+                    </DatePicker>
+                   
                 </StackPanel>
 
                 
@@ -50,13 +60,10 @@
                         Margin="10,10,140,10" 
                         HorizontalAlignment="Right"
                         BorderBrush="#f0ad4e"
-                        Foreground="#f0ad4e">
+                        Click="ClearIncomeForm1"
+                        Foreground="#f0ad4e" >
                         Clear
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </Button.Resources>
+                        
                     </Button>
 
 
@@ -73,51 +80,42 @@
                     Next
                 </Button>
 
-                <Button Style="{StaticResource MaterialDesignOutlinedButton}"
-                        BorderBrush="#5cb85c"
-                        Foreground="#5cb85c"
-                        Height="50"
-                        Width="180"
-                        HorizontalAlignment="Left"
-                        Grid.Row="4"
-                        Padding="0 0 10 0"
-                       >
-                   <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0 0">
-                    <materialDesign:PackIcon Kind="Lightbulb" 
-                                             Width="20" Height="20" 
-                                             Foreground="Green" Margin="5" 
-                                             VerticalAlignment="Center"
-                                             HorizontalAlignment="Left"/>
-                    <TextBlock  Text="Send Feedback" Margin="0 10"/>
-                </StackPanel>
-                </Button>
-
-                
-
             </Grid>
 
-            <Grid Margin="0 20 0 0" Visibility="Hidden" Name="IncomeForm2">
+            <Grid Margin="0 4 0 0" Visibility="Hidden" Name="IncomeForm2">
 
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
                     <RowDefinition/>
                     <RowDefinition Height="70"/>
                 </Grid.RowDefinitions>
 
-                <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+                <TextBlock FontSize="18" TextAlignment="Center" >Select a Catagory</TextBlock>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
                     <Grid x:Name="CatagoryList">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
                         </Grid.RowDefinitions>
 
-                     
-                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+
+
                     </Grid>
                 </ScrollViewer>
 
-                <Button Grid.Row="1"
+                <Button Grid.Row="2"
                         Style="{StaticResource MaterialDesignOutlinedButton}"
                         Width="100"
                         Height="36"
@@ -127,11 +125,7 @@
                         Foreground="#f0ad4e"
                         Click="Prev">
                     Previous
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
+                   
                 </Button>
 
 
@@ -142,13 +136,273 @@
                         Height="36"
                         Margin="0 0 20 0"
                         HorizontalAlignment="Right"
-                        Grid.Row="1"
+                        Grid.Row="2"
+                        
                        >
-                    Next
+                    Add
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="190"
+                        Height="36"
+                        Margin="0 0 20 0"
+                        HorizontalAlignment="Left"
+                        Grid.Row="2"
+                        Click="NextAddCatagory"
+                       >
+                    <StackPanel Orientation="Horizontal" Margin="0 0">
+                        <materialDesign:PackIcon Kind="AddCircle" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        <TextBlock  Text="Add New Catagory" Margin="0 5"/>
+                    </StackPanel>
                 </Button>
 
             </Grid>
-            
+
+            <Grid Margin="0 20 0 0" Name="AddCatagoryForm" Visibility="Hidden">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+
+                
+                <StackPanel Grid.Row="0" Margin="20 0">
+                    <TextBox materialDesign:HintAssist.Hint="Type Catagory Name"
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                             FontSize="15"/>
+                    
+                </StackPanel>
+                <StackPanel Name="selectedIcon" Orientation="Horizontal" Margin="0 0">
+                    <materialDesign:PackIcon Kind="AddCircle" 
+                                             Width="20" Height="20" 
+                                             Foreground="#5cb85c" Margin="400 0 0 11" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="1" FontSize="18" TextAlignment="Center" >Select a Icon</TextBlock>
+
+
+                <Grid Grid.Row="1" Grid.RowSpan="2" Margin="0 25 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Left"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="Home" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Row="1" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Left"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="Car" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Grid.Row="3" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Left"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="Travel" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Center"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="Food" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Center"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="TshirtCrewOutline" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Center"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="Pill" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    
+
+
+                    <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Right"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="FuelPump" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Right"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="BabyFaceOutline" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Grid.Row="3" Grid.Column="2" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#d9534f"
+                        Foreground="#d9534f"
+                        Width="100"
+                        Height="36"
+                        Margin="20 0 20 0"
+                        HorizontalAlignment="Right"
+                        Click="NextAddCatagory"
+                       >
+                        <StackPanel Orientation="Horizontal" Margin="0 0">
+                            <materialDesign:PackIcon Kind="QuestionMark" 
+                                             Width="20" Height="20" 
+                                             Foreground="#d9534f" Margin="5" 
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+
+
+                </Grid>
+                
+               
+                
+
+
+          
+                <Button Grid.Row="3"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        Width="100"
+                        Height="36"
+                        Margin="10,10,140,10" 
+                        HorizontalAlignment="Right"
+                        BorderBrush="#f0ad4e"
+                        Foreground="#f0ad4e"
+                        Click="PrevAddCatagory">
+                    Previous
+                    
+                </Button>
+
+
+                <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#5cb85c"
+                        Foreground="#5cb85c"
+                        Width="100"
+                        Height="36"
+                        Margin="0 0 20 0"
+                        HorizontalAlignment="Right"
+                        Grid.Row="3"
+                       >
+                    Add
+                </Button>
+
+            </Grid>
+
         </Grid>
     </Border>
 </UserControl>

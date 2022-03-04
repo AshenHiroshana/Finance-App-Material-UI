@@ -53,11 +53,6 @@
             "fileVersion": "4.3.0.3"
           }
         }
-      },
-      "personal financial management app class libbey/1.0.0": {
-        "runtime": {
-          "personal financial management app class libbey.dll": {}
-        }
       }
     }
   },
@@ -94,11 +89,6 @@
       "sha512": "sha512-edXh0Hl2LukyEZN+REVFuN+gaaUFo6AfHSaBjuZ95k4Qz1TljcxnfCznMKkGaQoEsy5ryk85ZbeRY/tOzFmKxg==",
       "path": "materialdesignthemes/4.3.0",
       "hashPath": "materialdesignthemes.4.3.0.nupkg.sha512"
-    },
-    "personal financial management app class libbey/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

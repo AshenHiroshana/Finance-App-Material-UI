@@ -1,4 +1,6 @@
-﻿using personal_financial_management_app_class_libbey;
+﻿
+using Finance_App.Entity;
+using Finance_App.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Text.Json;
 
 namespace Finance_App.View
 {
@@ -27,62 +31,86 @@ namespace Finance_App.View
 
             InitializeComponent();
 
+            CatagoryController catagoryController = new CatagoryController();
+
+            List<Catagory> catagories = catagoryController.GetIncomeCatagory();
 
 
-            Catagory catagory1 = new Catagory();
-            catagory1.Name = "Salary";
-
-            Catagory catagory2 = new Catagory();
-            catagory2.Name = "Interest";
-
-
-            List<Catagory> cat = new List<Catagory>();
-            cat.Add(catagory1);
-            cat.Add(catagory2);
 
             List<Button> x = new List<Button>();
 
-            for (int i = 0; i < cat.Count; i++)
+            for (int i = 0; i < catagories.Count; i++)
             {
-                Button button = new Button();
-                button.Content = cat[i].Name;
+
                 Style? style = this.FindResource("MaterialDesignOutlinedButton") as Style;
-                button.Style = style;
-                button.Height = 50;
-                button.Width = 250;
-                button.HorizontalAlignment = HorizontalAlignment.Left;
-                //button.Padding = new Thickness(0,0,10,0);
+                Button button = Common.CreateCatagoryButton(catagories[i].Name, catagories[i].Icon, style);
+                button.Click += new RoutedEventHandler(Catagory_Is_Click);
+               // button.Click += new EventHandler(Catagory_Is_Click);
 
-                StackPanel stackPanel = new StackPanel();
-                stackPanel.Orientation = Orientation.Horizontal;
-                //stackPanel.Margin = new Thickness(0);
-
-                MaterialDesignThemes.Wpf.PackIcon packIcon = new MaterialDesignThemes.Wpf.PackIcon{ Kind = MaterialDesignThemes.Wpf.PackIconKind.Package };
-                packIcon.Width = 20;
-                packIcon.Height = 20;
-                packIcon.VerticalAlignment = VerticalAlignment.Center;
-                packIcon.HorizontalAlignment = HorizontalAlignment.Center;
-                stackPanel.Children.Add(packIcon);
-
-                TextBlock textBlock = new TextBlock();  
-                textBlock.Text = cat[i].Name;
-                textBlock.Margin = new Thickness(10, 0, 0, 0);
-                stackPanel.Children.Add(textBlock);
-
-                button.Content = stackPanel;
-
-                button.SetValue(Grid.RowProperty, i);
+                button.SetValue(Grid.RowProperty, (i / 2));
+                button.SetValue(Grid.ColumnProperty, (i % 2));
                 CatagoryList.Children.Add(button);
+
+
 
             }
 
 
         }
 
+        private void Catagory_Is_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            string x = button.ToolTip.ToString();
+            MessageBox.Show(x);
+            
+        }
+
         private void Next(object sender, RoutedEventArgs e)
         {
-            IncomeForm1.Visibility = Visibility.Hidden;
-            IncomeForm2.Visibility = Visibility.Visible;
+
+            Boolean approveTxtIncomeDescription = false;
+            Boolean approveTxtIncomeAmount = false;
+            Boolean approveTxtIncomeDate = false;
+            Double x;
+
+            if (txtIncomeDescription.Text == "")
+            {
+                txtIncomeDescription.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (txtIncomeAmount.Text == "" || !double.TryParse(txtIncomeAmount.Text, out x))
+            {
+                txtIncomeAmount.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (txtIncomeDate.Text == "")
+            {
+                txtIncomeDate.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+
+            if (txtIncomeDescription.Text != "")
+            {
+                txtIncomeDescription.BorderBrush = new SolidColorBrush(Color.FromRgb(70,70,70));
+                approveTxtIncomeDescription = true;
+            }
+            
+            if (txtIncomeAmount.Text != "" && double.TryParse(txtIncomeAmount.Text, out x))
+            {
+                
+                txtIncomeAmount.BorderBrush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+                approveTxtIncomeAmount = true;
+            }
+            if (txtIncomeDate.Text != "")
+            {
+                txtIncomeDate.BorderBrush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+                approveTxtIncomeDate = true;
+            }
+
+            if(approveTxtIncomeDate && approveTxtIncomeDescription && approveTxtIncomeAmount)
+            {
+                IncomeForm1.Visibility = Visibility.Hidden;
+                IncomeForm2.Visibility = Visibility.Visible;
+            }
+            
         }
 
         private void Prev(object sender, RoutedEventArgs e)
@@ -90,5 +118,27 @@ namespace Finance_App.View
             IncomeForm2.Visibility = Visibility.Hidden;
             IncomeForm1.Visibility = Visibility.Visible;
         }
+
+        private void NextAddCatagory(object sender, RoutedEventArgs e)
+        {
+            IncomeForm2.Visibility = Visibility.Hidden;
+            AddCatagoryForm.Visibility = Visibility.Visible;
+        }
+
+        private void PrevAddCatagory(object sender, RoutedEventArgs e)
+        {
+            IncomeForm2.Visibility = Visibility.Visible;
+            AddCatagoryForm.Visibility = Visibility.Hidden;
+        }
+
+        private void ClearIncomeForm1(object sender, RoutedEventArgs e)
+        {
+            txtIncomeDescription.Text = "";
+            txtIncomeAmount.Text = "";
+            txtIncomeDate.Text = "";
+        }
+
+       
+
     }
 }

@@ -111,5 +111,10 @@ namespace Finance_App
                 ellipse.Fill = converter.ConvertFromString("#DD0") as Brush;
             }
         }
+
+        private void Expences_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

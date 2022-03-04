@@ -23,6 +23,8 @@ namespace Finance_App.View
         public HomeView()
         {
             InitializeComponent();
+
+          
         }
     }
 }

@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\personal financial management app class libbey\personal financial management app class libbey\personal financial management app class libbey.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Assets\mountains.jpg" />
   </ItemGroup>
 

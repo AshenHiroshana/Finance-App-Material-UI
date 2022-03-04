@@ -7,6 +7,8 @@
         xmlns:local="clr-namespace:Finance_App"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="1000"
+        MinHeight="450"
+        MinWidth="1000"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None"
         ResizeMode="CanResizeWithGrip" Background="{x:Null}"
@@ -20,7 +22,7 @@
             <Grid>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="80"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -49,7 +51,7 @@
                                     <TextBlock Text="Help" Margin="10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Name="Expences" Height="45" Padding="0">
+                            <ListViewItem Name="Expences" Height="45" Padding="0" Selected="Expences_Selected">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
                                     <materialDesign:PackIcon Kind="Lightbulb" Width="20" Height="20" Foreground="Green" Margin="5" VerticalAlignment="Center"/>
                                     <TextBlock Text="Send Feedback" Margin="10"/>
