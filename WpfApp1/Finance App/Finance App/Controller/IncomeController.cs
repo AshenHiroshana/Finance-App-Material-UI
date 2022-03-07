@@ -27,6 +27,18 @@ namespace Finance_App.Controller
 
         }
 
+        public void addIncomeListToFile(List<Transaction> incomeList)
+        {
+
+            string jsonString = JsonSerializer.Serialize(incomeList);
+
+            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/IncomeList.txt");
+            writer.Write(jsonString);
+            writer.Close();
+
+
+        }
+
         public List<Transaction> GetIncomeList()
         {
 

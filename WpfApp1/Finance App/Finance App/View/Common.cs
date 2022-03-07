@@ -82,6 +82,9 @@ namespace Finance_App.View
                 case "QuestionMark":
                     return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.QuestionMark };
 
+                case "AddCircle":
+                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.AddCircle };
+
                 default:
                     return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Home };
 

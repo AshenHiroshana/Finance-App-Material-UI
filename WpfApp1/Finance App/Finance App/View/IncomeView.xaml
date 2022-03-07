@@ -95,21 +95,10 @@
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
                     <Grid x:Name="CatagoryList">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                        </Grid.RowDefinitions>
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-
 
 
                     </Grid>
@@ -178,6 +167,7 @@
                 <StackPanel Grid.Row="0" Margin="20 0">
                     <TextBox materialDesign:HintAssist.Hint="Type Catagory Name"
                              Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                             Name="txtCatagoryname"
                              FontSize="15"/>
                     
                 </StackPanel>
@@ -211,8 +201,10 @@
                         Width="100"
                         Height="36"
                         Margin="20 0 20 0"
+                        
                         HorizontalAlignment="Left"
-                        Click="NextAddCatagory"
+                        Name="Home"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="Home" 
@@ -228,9 +220,10 @@
                         Foreground="#d9534f"
                         Width="100"
                         Height="36"
+                        Name="Car"
                         Margin="20 0 20 0"
                         HorizontalAlignment="Left"
-                        Click="NextAddCatagory"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="Car" 
@@ -247,7 +240,8 @@
                         Height="36"
                         Margin="20 0 20 0"
                         HorizontalAlignment="Left"
-                        Click="NextAddCatagory"
+                        Name="Travel"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="Travel" 
@@ -265,7 +259,8 @@
                         Height="36"
                         Margin="20 0 20 0"
                         HorizontalAlignment="Center"
-                        Click="NextAddCatagory"
+                        Name="Food"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="Food" 
@@ -283,7 +278,8 @@
                         Height="36"
                         Margin="20 0 20 0"
                         HorizontalAlignment="Center"
-                        Click="NextAddCatagory"
+                        Name="TshirtCrewOutline"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="TshirtCrewOutline" 
@@ -301,7 +297,8 @@
                         Height="36"
                         Margin="20 0 20 0"
                         HorizontalAlignment="Center"
-                        Click="NextAddCatagory"
+                        Name="Pill"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="Pill" 
@@ -322,7 +319,8 @@
                         Height="36"
                         Margin="20 0 20 0"
                         HorizontalAlignment="Right"
-                        Click="NextAddCatagory"
+                        Name="FuelPump"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="FuelPump" 
@@ -340,7 +338,8 @@
                         Height="36"
                         Margin="20 0 20 0"
                         HorizontalAlignment="Right"
-                        Click="NextAddCatagory"
+                        Name="BabyFaceOutline"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="BabyFaceOutline" 
@@ -357,7 +356,8 @@
                         Height="36"
                         Margin="20 0 20 0"
                         HorizontalAlignment="Right"
-                        Click="NextAddCatagory"
+                        Name="QuestionMark"
+                        Click="AddCatagoryIcon"
                        >
                         <StackPanel Orientation="Horizontal" Margin="0 0">
                             <materialDesign:PackIcon Kind="QuestionMark" 
@@ -397,6 +397,7 @@
                         Height="36"
                         Margin="0 0 20 0"
                         HorizontalAlignment="Right"
+                        Click="AddCatagory"
                         Grid.Row="3"
                        >
                     Add
@@ -404,6 +405,17 @@
 
             </Grid>
 
+            <Border Grid.Column="1" Background="#efefef" CornerRadius="10"
+                    >
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+
+                    <Grid Margin="20 10"  Grid.Column="1" x:Name="lstIncomeList" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+                    </Grid>
+
+                </ScrollViewer>
+
+            </Border>
         </Grid>
     </Border>
 </UserControl>

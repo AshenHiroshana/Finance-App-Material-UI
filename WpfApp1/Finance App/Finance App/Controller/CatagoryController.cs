@@ -11,10 +11,11 @@ namespace Finance_App.Controller
 {
     public class CatagoryController
     {
-        public void SaveIncomeCatagory()
+        public void SaveIncomeCatagory(Catagory catagory)
         {
 
             List<Catagory> catagories = GetIncomeCatagory();
+            catagories.Add(catagory);
 
             string jsonString = JsonSerializer.Serialize(catagories);
 
