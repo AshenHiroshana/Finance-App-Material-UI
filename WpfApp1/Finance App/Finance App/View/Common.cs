@@ -23,8 +23,9 @@ namespace Finance_App.View
             button.Width = 210;
             button.Content = name;
             button.ToolTip = name;
-           /* button.Foreground = new SolidColorBrush(Color.FromRgb(2, 117, 216));
-            button.BorderBrush = new SolidColorBrush(Color.FromRgb(2, 117, 216));*/
+            button.Name = icon;
+            /* button.Foreground = new SolidColorBrush(Color.FromRgb(2, 117, 216));
+             button.BorderBrush = new SolidColorBrush(Color.FromRgb(2, 117, 216));*/
             button.HorizontalAlignment = HorizontalAlignment.Left;
             //button.Padding = new Thickness(0,0,10,0);
 

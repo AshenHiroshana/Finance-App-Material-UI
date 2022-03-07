@@ -27,14 +27,21 @@ namespace Finance_App.Controller
         public List<Catagory> GetIncomeCatagory()
         {
 
+            try
+            {
+                StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/WriteText.txt");
+                String json = reader.ReadToEnd();
+                reader.Close();
 
-            StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/WriteText.txt");
-            String json = reader.ReadToEnd();
-            reader.Close();
+                List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
 
-            List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
-
-            return catagories;
+                return catagories;
+            }
+            catch (Exception ex)
+            {
+                List<Catagory> incomeList = new List<Catagory>();
+                return incomeList;
+            }
 
         }
     }
