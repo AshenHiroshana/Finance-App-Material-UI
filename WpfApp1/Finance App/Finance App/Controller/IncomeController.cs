@@ -39,12 +39,9 @@ namespace Finance_App.Controller
               if (oldIncome.Id == fullIncome.Id)
                 {
                     oldIncome = fullIncome;
-                    MessageBox.Show("up");
+                    
                 }
-                else
-                {
-                    MessageBox.Show("dwn");
-                }
+               
             }
             newIncome.Id = findIncomeId(); 
 

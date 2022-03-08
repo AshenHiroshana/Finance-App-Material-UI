@@ -1,5 +1,4 @@
-﻿
-using Finance_App.Entity;
+﻿using Finance_App.Entity;
 using Finance_App.Controller;
 using System;
 using System.Collections.Generic;
@@ -21,16 +20,16 @@ using System.Text.Json;
 namespace Finance_App.View
 {
     /// <summary>
-    /// Interaction logic for IncomeView.xaml
+    /// Interaction logic for ExpenseView.xaml
     /// </summary>
-    public partial class IncomeView : UserControl
+    public partial class ExpenseView : UserControl
     {
-        public IncomeView()
+        public ExpenseView()
         {
 
 
             InitializeComponent();
-            updateIncomeList();
+            updateExpenseList();
             updateCatagoryList();
 
 
@@ -56,8 +55,8 @@ namespace Finance_App.View
 
         }
 
-        IncomeController incomeController = new IncomeController();
-        private void AddIncome(object sender, RoutedEventArgs e)
+        ExpenseController expenseController = new ExpenseController();
+        private void AddExpense(object sender, RoutedEventArgs e)
         {
             if (clickedButton == null)
             {
@@ -67,35 +66,37 @@ namespace Finance_App.View
             else
             {
 
-                String incomeDescription = txtIncomeDescription.Text;
-                Double incomeAmount = double.Parse(txtIncomeAmount.Text);
-                DateTime incomeDate = (DateTime)txtIncomeDate.GetValue(DatePicker.SelectedDateProperty);
+                String expenseDescription = txtExpenseDescription.Text;
+                Double expenseAmount = double.Parse(txtExpenseAmount.Text);
+                DateTime expenseDate = (DateTime)txtExpenseDate.GetValue(DatePicker.SelectedDateProperty);
                 
-                Catagory incomeCatagory = new Catagory();
-                incomeCatagory.Name = (string)clickedButton.ToolTip;
-                incomeCatagory.Icon = clickedButton.Name;
+                Catagory expenseCatagory = new Catagory();
+                expenseCatagory.Name = (string)clickedButton.ToolTip;
+                expenseCatagory.Icon = clickedButton.Name;
 
                 
 
-                Transaction incomeTransaction = new Transaction();
-                incomeTransaction.Description = incomeDescription;
-                incomeTransaction.Amount = incomeAmount;
-                incomeTransaction.Date = incomeDate;
-                incomeTransaction.Catagory = incomeCatagory;
+                Transaction expenseTransaction = new Transaction();
+                expenseTransaction.Description = expenseDescription;
+                expenseTransaction.Amount = expenseAmount;
+                expenseTransaction.Date = expenseDate;
+                expenseTransaction.Catagory = expenseCatagory;
 
-                if (incomeUpdating)
+                if (expenseUpdating)
                 {
-                    incomeUpdatedList.Add(incomeTransaction);
-                    incomeController.updateIncomeListToFile(updatedIncome, incomeTransaction);
-                    updateIncomeList();
-                    ClearIncomeForm();
+                    expenseUpdatedList.Add(expenseTransaction);
+                    expenseController.updateExpenseListToFile(updatedExpense, expenseTransaction);
+                    updateExpenseList();
+                    ClearExpenseForm();
+                   
 
                 }
                 else
                 {
-                    incomeController.addIncomeToFile(incomeTransaction);
-                    updateIncomeList();
-                    ClearIncomeForm();
+                    expenseController.addExpenseToFile(expenseTransaction);
+                    updateExpenseList();
+                    ClearExpenseForm();
+                    
                 }
 
 
@@ -103,33 +104,33 @@ namespace Finance_App.View
 
         }
 
-        public void updateIncomeList(List<Transaction> incomeList = null)
+        public void updateExpenseList(List<Transaction> expenseList = null)
         {
 
-            if (incomeList == null)
+            if (expenseList == null)
             {
-                incomeList = incomeController.GetIncomeListByFilter();
+                expenseList = expenseController.GetExpenseListByFilter();
             }
 
-            lstIncomeList.Children.Clear();
-            lstIncomeList.RowDefinitions.Clear();
-            for (int i = 0; i < incomeList.Count; i++)
+            lstExpenseList.Children.Clear();
+            lstExpenseList.RowDefinitions.Clear();
+            for (int i = 0; i < expenseList.Count; i++)
             {
 
                 Style? style = this.FindResource("MaterialDesignOutlinedButton") as Style;
-                string text = " Rs : " + incomeList[i].Amount;
-                Button button = Common.CreateCatagoryButton(text, incomeList[i].Catagory.Icon, style);
-                button.Click += new RoutedEventHandler(Income_Is_Click);
+                string text = " Rs : " + expenseList[i].Amount;
+                Button button = Common.CreateCatagoryButton(text, expenseList[i].Catagory.Icon, style);
+                button.Click += new RoutedEventHandler(Expense_Is_Click);
                 button.Height = 30;
                 button.Width = 190;
                 button.Tag = i.ToString();
-                button.ToolTip = incomeList[i].Description; ;
+                button.ToolTip = expenseList[i].Description; ;
                 //button.Name = icon;
                 button.SetValue(Grid.RowProperty, (i));
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(40);
-                lstIncomeList.RowDefinitions.Add(row);
-                lstIncomeList.Children.Add(button);
+                lstExpenseList.RowDefinitions.Add(row);
+                lstExpenseList.Children.Add(button);
 
 
 
@@ -138,122 +139,122 @@ namespace Finance_App.View
 
         }
 
-        Boolean incomeUpdating = false;
-        List<Transaction> incomeUpdatedList;
-        Transaction updatedIncome;
-        private void Income_Is_Click(object sender, RoutedEventArgs e)
+        Boolean expenseUpdating = false;
+        List<Transaction> expenseUpdatedList;
+        Transaction updatedExpense;
+        private void Expense_Is_Click(object sender, RoutedEventArgs e)
         {
-            if (updatedIncome != null)
+            if (updatedExpense != null)
             {
-                incomeUpdatedList.Add(updatedIncome);
+                expenseUpdatedList.Add(updatedExpense);
             }
             else
             {
-                incomeUpdatedList = incomeController.GetIncomeListByFilter();
+                expenseUpdatedList = expenseController.GetExpenseListByFilter();
             }
 
             Button_Is_Click(sender, e);
-            incomeUpdating = true;
+            expenseUpdating = true;
             Button button = sender as Button;
             int id = int.Parse((string)button.Tag);
 
-            for (int i = 0; i < incomeUpdatedList.Count; i++)
+            for (int i = 0; i < expenseUpdatedList.Count; i++)
             {
                 if (i == id)
                 {
-                    updatedIncome = incomeUpdatedList[i];
-                    incomeUpdatedList.RemoveAt(i);
-                    updateIncomeList(incomeUpdatedList);
+                    updatedExpense = expenseUpdatedList[i];
+                    expenseUpdatedList.RemoveAt(i);
+                    updateExpenseList(expenseUpdatedList);
                 }
             }
 
-            txtIncomeAmount.Text = updatedIncome.Amount.ToString();
-            txtIncomeDescription.Text = updatedIncome.Description;
-            txtSelectedCatagory.Text = "You selected " + updatedIncome.Catagory.Name + " as your Category";
-            txtIncomeDate.Text = updatedIncome.Date.ToString();
+            txtExpenseAmount.Text = updatedExpense.Amount.ToString();
+            txtExpenseDescription.Text = updatedExpense.Description;
+            txtSelectedCatagory.Text = "You selected " + updatedExpense.Catagory.Name + " as your Category";
+            txtExpenseDate.Text = updatedExpense.Date.ToString();
         }
 
         private void Next(object sender, RoutedEventArgs e)
         {
 
-            Boolean approveTxtIncomeDescription = false;
-            Boolean approveTxtIncomeAmount = false;
-            Boolean approveTxtIncomeDate = false;
+            Boolean approveTxtExpenseDescription = false;
+            Boolean approveTxtExpenseAmount = false;
+            Boolean approveTxtExpenseDate = false;
             Double x;
 
-            if (txtIncomeDescription.Text == "")
+            if (txtExpenseDescription.Text == "")
             {
-                txtIncomeDescription.BorderBrush = new SolidColorBrush(Color.FromRgb(217, 83, 79));
+                txtExpenseDescription.BorderBrush = new SolidColorBrush(Color.FromRgb(217, 83, 79));
             }
-            if (txtIncomeAmount.Text == "" || !double.TryParse(txtIncomeAmount.Text, out x))
+            if (txtExpenseAmount.Text == "" || !double.TryParse(txtExpenseAmount.Text, out x))
             {
-                txtIncomeAmount.BorderBrush = new SolidColorBrush(Color.FromRgb(217, 83, 79));
+                txtExpenseAmount.BorderBrush = new SolidColorBrush(Color.FromRgb(217, 83, 79));
             }
-            if (txtIncomeDate.Text == "")
+            if (txtExpenseDate.Text == "")
             {
-                txtIncomeDate.BorderBrush = new SolidColorBrush(Color.FromRgb(217, 83, 79));
-            }
-
-            if (txtIncomeDescription.Text != "")
-            {
-                txtIncomeDescription.BorderBrush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
-                approveTxtIncomeDescription = true;
+                txtExpenseDate.BorderBrush = new SolidColorBrush(Color.FromRgb(217, 83, 79));
             }
 
-            if (txtIncomeAmount.Text != "" && double.TryParse(txtIncomeAmount.Text, out x))
+            if (txtExpenseDescription.Text != "")
             {
-
-                txtIncomeAmount.BorderBrush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
-                approveTxtIncomeAmount = true;
-            }
-            if (txtIncomeDate.Text != "")
-            {
-                txtIncomeDate.BorderBrush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
-                approveTxtIncomeDate = true;
+                txtExpenseDescription.BorderBrush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+                approveTxtExpenseDescription = true;
             }
 
-            if (approveTxtIncomeDate && approveTxtIncomeDescription && approveTxtIncomeAmount)
+            if (txtExpenseAmount.Text != "" && double.TryParse(txtExpenseAmount.Text, out x))
             {
-                IncomeForm1.Visibility = Visibility.Hidden;
-                IncomeForm2.Visibility = Visibility.Visible;
+
+                txtExpenseAmount.BorderBrush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+                approveTxtExpenseAmount = true;
+            }
+            if (txtExpenseDate.Text != "")
+            {
+                txtExpenseDate.BorderBrush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+                approveTxtExpenseDate = true;
+            }
+
+            if (approveTxtExpenseDate && approveTxtExpenseDescription && approveTxtExpenseAmount)
+            {
+                ExpenseForm1.Visibility = Visibility.Hidden;
+                ExpenseForm2.Visibility = Visibility.Visible;
             }
 
         }
 
         private void Prev(object sender, RoutedEventArgs e)
         {
-            IncomeForm2.Visibility = Visibility.Hidden;
-            IncomeForm1.Visibility = Visibility.Visible;
+            ExpenseForm2.Visibility = Visibility.Hidden;
+            ExpenseForm1.Visibility = Visibility.Visible;
         }
 
         private void NextAddCatagory(object sender, RoutedEventArgs e)
         {
-            IncomeForm2.Visibility = Visibility.Hidden;
+            ExpenseForm2.Visibility = Visibility.Hidden;
             AddCatagoryForm.Visibility = Visibility.Visible;
         }
 
         private void PrevAddCatagory(object sender, RoutedEventArgs e)
         {
-            IncomeForm2.Visibility = Visibility.Visible;
+            ExpenseForm2.Visibility = Visibility.Visible;
             AddCatagoryForm.Visibility = Visibility.Hidden;
         }
 
-        private void ClearIncomeForm1(object sender, RoutedEventArgs e)
+        private void ClearExpenseForm1(object sender, RoutedEventArgs e)
         {
-            txtIncomeDescription.Text = "";
-            txtIncomeAmount.Text = "";
-            txtIncomeDate.Text = "";
+            txtExpenseDescription.Text = "";
+            txtExpenseAmount.Text = "";
+            txtExpenseDate.Text = "";
         }
 
-        public void ClearIncomeForm()
+        public void ClearExpenseForm()
         {
-            incomeUpdating = false;
-            updatedIncome = null;
-            incomeUpdatedList = null;
+            expenseUpdating = false;
+            updatedExpense = null;
+            expenseUpdatedList = null;
 
-            txtIncomeDescription.Text = "";
-            txtIncomeAmount.Text = "";
-            txtIncomeDate.Text = "";
+            txtExpenseDescription.Text = "";
+            txtExpenseAmount.Text = "";
+            txtExpenseDate.Text = "";
 
             txtSelectedCatagory.Text = "Select a Catagory";
             txtSelectedCatagory.Foreground = new SolidColorBrush(Color.FromRgb(217, 83, 79));
@@ -266,8 +267,8 @@ namespace Finance_App.View
 
             clickedButton = null;
 
-            IncomeForm2.Visibility = Visibility.Hidden;
-            IncomeForm1.Visibility = Visibility.Visible;
+            ExpenseForm2.Visibility = Visibility.Hidden;
+            ExpenseForm1.Visibility = Visibility.Visible;
         }
 
         string icon = "AddCircle";
@@ -288,7 +289,7 @@ namespace Finance_App.View
 
         private void AddCatagory(object sender, RoutedEventArgs e)
         {
-           
+
             if (txtCatagoryname.Text == "")
             {
                 txtCatagoryname.BorderBrush = new SolidColorBrush(Color.FromRgb(217, 83, 79));
@@ -296,7 +297,7 @@ namespace Finance_App.View
             if (txtCatagoryname.Text != "")
             {
                 CatagoryController catagoryController = new CatagoryController();
-                List<Catagory> catagories = catagoryController.GetIncomeCatagory();
+                List<Catagory> catagories = catagoryController.GetExpenseCatagory();
 
                 Boolean isSet = false;
 
@@ -304,7 +305,7 @@ namespace Finance_App.View
                 {
                     if (item.Name == txtCatagoryname.Text)
                     {
-                        isSet = true;   
+                        isSet = true;
                         break;
                     }
                 }
@@ -312,7 +313,7 @@ namespace Finance_App.View
                 if (isSet)
                 {
                     MessageBox.Show("This Category Already in the List");
-                   
+
                     txtCatagoryname.BorderBrush = new SolidColorBrush(Color.FromRgb(217, 83, 79));
                 }
                 else
@@ -323,10 +324,10 @@ namespace Finance_App.View
                     catagory.Icon = icon;
 
                     txtCatagoryname.Text = "";
-                    catagoryController.SaveIncomeCatagory(catagory);
+                    catagoryController.SaveExpenseCatagory(catagory);
 
                     updateCatagoryList();
-                    IncomeForm2.Visibility = Visibility.Visible;
+                    ExpenseForm2.Visibility = Visibility.Visible;
                     AddCatagoryForm.Visibility = Visibility.Hidden;
                 }
 
@@ -346,7 +347,7 @@ namespace Finance_App.View
 
             CatagoryController catagoryController = new CatagoryController();
 
-            List<Catagory> catagories = catagoryController.GetIncomeCatagory();
+            List<Catagory> catagories = catagoryController.GetExpenseCatagory();
 
 
 
@@ -363,7 +364,7 @@ namespace Finance_App.View
                 button.SetValue(Grid.RowProperty, (i / 2));
                 button.SetValue(Grid.ColumnProperty, (i % 2));
 
-               if (i % 2 == 0)
+                if (i % 2 == 0)
                 {
                     RowDefinition row = new RowDefinition();
                     row.Height = new GridLength(70);

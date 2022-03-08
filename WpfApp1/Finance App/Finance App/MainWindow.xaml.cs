@@ -35,6 +35,8 @@ namespace Finance_App
                 DataContext = new HomeView();
             if (menuItem == "Income")
                 DataContext = new IncomeView();
+            if (menuItem == "Expence")
+                DataContext = new ExpenseView();
 
         }
 
@@ -47,7 +49,7 @@ namespace Finance_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                
             }
         }
 
@@ -59,7 +61,7 @@ namespace Finance_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                
             }
         }
 
@@ -90,7 +92,7 @@ namespace Finance_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                
             }
         }
 
@@ -133,6 +135,8 @@ namespace Finance_App
                     DataContext = new HomeView();
                 if (menuItem == "Income")
                     DataContext = new IncomeView();
+                if (menuItem == "Expence")
+                    DataContext = new ExpenseView();
             }
         }
 
@@ -149,6 +153,8 @@ namespace Finance_App
                 DataContext = new HomeView();
             if (menuItem == "Income")
                 DataContext = new IncomeView();
+            if (menuItem == "Expence")
+                DataContext = new ExpenseView();
 
         }
     }

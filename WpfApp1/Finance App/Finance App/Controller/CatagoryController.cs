@@ -11,6 +11,7 @@ namespace Finance_App.Controller
 {
     public class CatagoryController
     {
+
         public void SaveIncomeCatagory(Catagory catagory)
         {
 
@@ -35,7 +36,7 @@ namespace Finance_App.Controller
                 reader.Close();
 
                 List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
-               
+
 
                 return catagories;
             }
@@ -43,6 +44,44 @@ namespace Finance_App.Controller
             {
                 List<Catagory> incomeList = new List<Catagory>();
                 return incomeList;
+            }
+
+        }
+
+
+
+        public void SaveExpenseCatagory(Catagory catagory)
+        {
+
+            List<Catagory> catagories = GetExpenseCatagory();
+            catagories.Add(catagory);
+
+            string jsonString = JsonSerializer.Serialize(catagories);
+
+            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/WriteText.txt");
+            writer.Write(jsonString);
+            writer.Close();
+
+        }
+
+        public List<Catagory> GetExpenseCatagory()
+        {
+
+            try
+            {
+                StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/WriteText.txt");
+                String json = reader.ReadToEnd();
+                reader.Close();
+
+                List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
+               
+
+                return catagories;
+            }
+            catch (Exception ex)
+            {
+                List<Catagory> expenseList = new List<Catagory>();
+                return expenseList;
             }
 
         }

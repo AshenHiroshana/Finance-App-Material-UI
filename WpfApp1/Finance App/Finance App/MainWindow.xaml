@@ -89,7 +89,7 @@
                                     <TextBlock Text="Help" Margin="10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Name="Expences" Height="45" Padding="0" Selected="Expences_Selected">
+                            <ListViewItem Name="Expence" Height="45" Padding="0" Selected="Expences_Selected">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
                                     <materialDesign:PackIcon Kind="Lightbulb" Width="20" Height="20" Foreground="Green" Margin="5" VerticalAlignment="Center"/>
                                     <TextBlock Text="Send Feedback" Margin="10"/>

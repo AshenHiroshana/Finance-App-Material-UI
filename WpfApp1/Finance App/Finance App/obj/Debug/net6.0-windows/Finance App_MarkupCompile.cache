@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Ashen\source\repos\Finance-App-Material-UI\WpfApp1\Finance App\Finance App\App.xaml
-3-1059431588
+4-42440466
 
-101172930335
+12-1801226977
 198-1509562515
-MainWindow.xaml;View\HomeView.xaml;View\IncomeView.xaml;
+MainWindow.xaml;View\ExpenseView.xaml;View\HomeView.xaml;View\IncomeView.xaml;
 
 False
 
