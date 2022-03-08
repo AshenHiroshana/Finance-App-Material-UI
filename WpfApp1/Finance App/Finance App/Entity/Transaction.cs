@@ -8,6 +8,7 @@ namespace Finance_App.Entity
 {
     public class Transaction
     {
+        private int? id;
         private Double? amount;
         private string? description;
         private Catagory? catagory;
@@ -18,13 +19,15 @@ namespace Finance_App.Entity
         public string? Description { get; set; }
         public Catagory? Catagory { get; set; }
         public DateTime? Date { get; set; }
+        public int? Id { get; set; }
 
         public Transaction()
         {
         }
 
-        public Transaction(Double? amount, string? description, Catagory? catagory, DateTime? dateOnly)
+        public Transaction(int id, Double? amount, string? description, Catagory? catagory, DateTime? dateOnly)
         {
+            this.id = id;
             this.amount = amount;
             this.description = description;
             this.catagory = catagory;

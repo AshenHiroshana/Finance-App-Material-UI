@@ -11,6 +11,12 @@ namespace Finance_App.View
 {
     public class Common : UserControl
     {
+
+        public static DateTime selectedDate = DateTime.Today;
+        public static string selectedFilter = "filterByMonth";
+
+
+
         public static Button CreateCatagoryButton(string? name, string? icon, Style? style)
         {
             

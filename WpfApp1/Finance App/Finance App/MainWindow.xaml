@@ -31,14 +31,52 @@
                 </Grid.ColumnDefinitions>
 
 
+                <Grid Grid.ColumnSpan="2">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Margin="0 10 50 0">
+                        <ComboBox materialDesign:HintAssist.Hint="Select a Filter"
+                             materialDesign:ValidationAssist.PopupPlacement="Center"
+                             Style="{StaticResource MaterialDesignOutlinedComboBox}" 
+                             FontSize="15"
+                             Height="55"
+                                  SelectionChanged="changeSelectedFilter"
+                                  Margin="10 0"
+                             Width="200"
+
+                             x:Name="cmbFilter"
+                             >
+                            <ComboBoxItem Name="filterByDate">Filter by Date</ComboBoxItem>
+                            <ComboBoxItem Name="filterByMonth" IsSelected="True">Filter by Month</ComboBoxItem>
+                            <ComboBoxItem Name="filterByYear">Filter by Year</ComboBoxItem>
+                        </ComboBox>
+                        
+                        <DatePicker 
+                             Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+                             materialDesign:HintAssist.Hint="Select a Date"
+                             FontSize="15"
+                            SelectedDateChanged="changeSelectedDate"
+                            Height="55"
+                             Width="190"
+                            Margin="30 0"
+                             Name="txtIncomeDate"
+                        >
+
+                        </DatePicker>   
+                    </StackPanel>
+                </Grid>
 
                 <Grid Grid.Row="1" x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="0 0 0 0" Background="Transparent" RenderTransformOrigin="0.5,0.5">
 
                     <StackPanel>
 
 
-                        <ListView SelectionChanged="ListView_SelectionChanged" Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
-                            <ListViewItem Name="Home" Height="45" Padding="0">
+                        <ListView Name="menuList" SelectionChanged="ListView_SelectionChanged" Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                            <ListViewItem IsSelected="True" Name="Home" Height="45" Padding="0">
                                     <StackPanel Orientation="Horizontal" Margin="10 0">
                                         <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                         <TextBlock Text="Recycle" Margin="10"/>

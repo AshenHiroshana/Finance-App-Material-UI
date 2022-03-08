@@ -35,6 +35,7 @@ namespace Finance_App.Controller
                 reader.Close();
 
                 List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
+               
 
                 return catagories;
             }

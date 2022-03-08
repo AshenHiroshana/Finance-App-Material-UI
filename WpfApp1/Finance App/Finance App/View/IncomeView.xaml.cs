@@ -69,7 +69,8 @@ namespace Finance_App.View
 
                 String incomeDescription = txtIncomeDescription.Text;
                 Double incomeAmount = double.Parse(txtIncomeAmount.Text);
-                DateTime incomeDate = (DateTime)txtIncomeDate.GetValue(DatePicker.DisplayDateProperty);
+                DateTime incomeDate = (DateTime)txtIncomeDate.GetValue(DatePicker.SelectedDateProperty);
+                MessageBox.Show(incomeDate.ToString());
                 Catagory incomeCatagory = new Catagory();
                 incomeCatagory.Name = (string)clickedButton.ToolTip;
                 incomeCatagory.Icon = clickedButton.Name;
@@ -85,9 +86,10 @@ namespace Finance_App.View
                 if (incomeUpdating)
                 {
                     incomeUpdatedList.Add(incomeTransaction);
-                    incomeController.addIncomeListToFile(incomeUpdatedList);
+                    incomeController.updateIncomeListToFile(updatedIncome, incomeTransaction);
                     updateIncomeList();
-                    ClearIncomeForm();
+                    //ClearIncomeForm();
+                    MessageBox.Show("xddddddd");
 
                 }
                 else
@@ -95,6 +97,7 @@ namespace Finance_App.View
                     incomeController.addIncomeToFile(incomeTransaction);
                     updateIncomeList();
                     ClearIncomeForm();
+                    MessageBox.Show("xd");
                 }
 
 
@@ -102,12 +105,12 @@ namespace Finance_App.View
 
         }
 
-        private void updateIncomeList(List<Transaction> incomeList = null)
+        public void updateIncomeList(List<Transaction> incomeList = null)
         {
 
             if (incomeList == null)
             {
-                incomeList = incomeController.GetIncomeList();
+                incomeList = incomeController.GetIncomeListByFilter();
             }
 
             lstIncomeList.Children.Clear();
@@ -148,7 +151,7 @@ namespace Finance_App.View
             }
             else
             {
-                incomeUpdatedList = incomeController.GetIncomeList();
+                incomeUpdatedList = incomeController.GetIncomeListByFilter();
             }
 
             Button_Is_Click(sender, e);

@@ -116,5 +116,40 @@ namespace Finance_App
         {
 
         }
+
+        private void changeSelectedFilter(object sender, RoutedEventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            ComboBoxItem boxItem = (ComboBoxItem)comboBox.SelectedItem;
+            Common.selectedFilter = boxItem.Name;
+
+            ListBox listBox = (ListBox)menuList;
+           if (listBox != null && listBox.SelectedItem != null)
+            {
+                ListBoxItem selectedMenuItem = (ListBoxItem)listBox.SelectedItem;
+
+                string menuItem = selectedMenuItem.Name.ToString();
+                if (menuItem == "Home")
+                    DataContext = new HomeView();
+                if (menuItem == "Income")
+                    DataContext = new IncomeView();
+            }
+        }
+
+       
+        private void changeSelectedDate(object sender, RoutedEventArgs e)
+        {
+            DatePicker datePicker = sender as DatePicker;
+            Common.selectedDate = (DateTime)datePicker.GetValue(DatePicker.SelectedDateProperty);
+            ListBox listBox = (ListBox)menuList;
+            ListBoxItem selectedMenuItem = (ListBoxItem)listBox.SelectedItem;
+
+            string menuItem = selectedMenuItem.Name.ToString();
+            if (menuItem == "Home")
+                DataContext = new HomeView();
+            if (menuItem == "Income")
+                DataContext = new IncomeView();
+
+        }
     }
 }
