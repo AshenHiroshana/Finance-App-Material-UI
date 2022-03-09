@@ -171,6 +171,8 @@ namespace Finance_App.View
             txtIncomeDescription.Text = updatedIncome.Description;
             txtSelectedCatagory.Text = "You selected " + updatedIncome.Catagory.Name + " as your Category";
             txtIncomeDate.Text = updatedIncome.Date.ToString();
+
+            incomeDelete.Visibility = Visibility.Visible;
         }
 
         private void Next(object sender, RoutedEventArgs e)
@@ -281,10 +283,14 @@ namespace Finance_App.View
             packIcon.Height = 20;
             packIcon.VerticalAlignment = VerticalAlignment.Center;
             packIcon.HorizontalAlignment = HorizontalAlignment.Center;
-            packIcon.Margin = new Thickness(400, 0, 0, 11);
+            packIcon.Margin = new Thickness(450, 0, 0, 11);
             packIcon.Foreground = new SolidColorBrush(Color.FromRgb(92, 184, 92));
             selectedIcon.Children.Add(packIcon);
         }
+
+
+       
+       
 
         private void AddCatagory(object sender, RoutedEventArgs e)
         {
@@ -373,6 +379,17 @@ namespace Finance_App.View
                 CatagoryList.Children.Add(button);
 
             }
+
+        }
+
+
+        private void deleteIncomeItem(object sender, RoutedEventArgs e)
+        {
+
+            incomeController.deleteIncomeFromFile(updatedIncome);
+            updateIncomeList();
+            ClearIncomeForm();
+            incomeDelete.Visibility = Visibility.Collapsed;
 
         }
 

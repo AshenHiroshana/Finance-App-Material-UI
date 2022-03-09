@@ -26,7 +26,7 @@ namespace Finance_App.View
             button.Content = name;
             button.Style = style;
             button.Height = 50;
-            button.Width = 210;
+            button.Width = 230;
             button.Content = name;
             button.ToolTip = name;
             button.Name = icon;
@@ -90,6 +90,8 @@ namespace Finance_App.View
 
                 case "AddCircle":
                     return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.AddCircle };
+                case "Dollar":
+                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Dollar };
 
                 default:
                     return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Home };

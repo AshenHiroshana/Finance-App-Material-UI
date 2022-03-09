@@ -30,6 +30,32 @@ namespace Finance_App.Controller
 
         }
 
+        public void deleteIncomeFromFile(Transaction oldIncome)
+        {
+
+
+            List<Transaction> fullIncomeList = GetIncomeList();
+            foreach (Transaction fullIncome in fullIncomeList)
+            {
+                if (oldIncome.Id == fullIncome.Id)
+                {
+                    oldIncome = fullIncome;
+
+                }
+
+            }
+
+            fullIncomeList.Remove(oldIncome);
+
+            string jsonString = JsonSerializer.Serialize(fullIncomeList);
+
+            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/IncomeList.txt");
+            writer.Write(jsonString);
+            writer.Close();
+
+
+        }
+
         public void updateIncomeListToFile(Transaction oldIncome, Transaction newIncome)
         {
 

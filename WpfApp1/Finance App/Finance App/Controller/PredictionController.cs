@@ -38,6 +38,13 @@ namespace Finance_App.Controller
 
             double numberOfMonth = dateTimeMax.Subtract(dateTimeMin).Days / (365.25 / 12);
 
+            numberOfMonth = Math.Ceiling(numberOfMonth);
+
+            if (numberOfMonth < 1)
+            {
+                numberOfMonth = 1;
+            }
+
             return numberOfMonth;
         }
 
@@ -62,6 +69,15 @@ namespace Finance_App.Controller
                 }
             }
             double numberOfMonth = dateTimeMax.Subtract(dateTimeMin).Days / (365.25 / 12);
+
+
+            numberOfMonth = Math.Ceiling(numberOfMonth);
+
+            if (numberOfMonth < 1)
+            {
+                numberOfMonth = 1;
+            }
+
 
             return numberOfMonth;
         }

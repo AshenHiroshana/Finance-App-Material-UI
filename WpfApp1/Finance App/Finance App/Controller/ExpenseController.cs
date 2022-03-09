@@ -30,6 +30,32 @@ namespace Finance_App.Controller
 
         }
 
+
+        public void deleteExpenseFromFile(Transaction oldExpense)
+        {
+
+
+            List<Transaction> fullExpenseList = GetExpenseList();
+            foreach (Transaction fullExpense in fullExpenseList)
+            {
+                if (oldExpense.Id == fullExpense.Id)
+                {
+                    oldExpense = fullExpense;
+
+                }
+
+            }
+
+            fullExpenseList.Remove(oldExpense);
+
+            string jsonString = JsonSerializer.Serialize(fullExpenseList);
+
+            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/ExpenseList.txt");
+            writer.Write(jsonString);
+            writer.Close();
+
+        }
+
         public void updateExpenseListToFile(Transaction oldExpense, Transaction newExpense)
         {
 

@@ -41,6 +41,10 @@ namespace Finance_App.View
            
             double numberOfMonth = predictionController.ClculateCommingIncome();
 
+            if (numberOfMonth < 1)
+            {
+                numberOfMonth = 1;
+            }
 
 
             LiveCharts.SeriesCollection seriesCollection = new LiveCharts.SeriesCollection();
@@ -113,10 +117,13 @@ namespace Finance_App.View
 
             double numberOfMonth = predictionController.ClculateCommingIncome();
 
+           
+
+
             LiveCharts.SeriesCollection seriesCollection = new LiveCharts.SeriesCollection();
 
             ExpenseController expenseController = new ExpenseController();
-            List<Transaction> expenseList = expenseController.GetExpenseListByFilter();
+            List<Transaction> expenseList = expenseController.GetExpenseList();
 
             List<Catagory> catagories = new List<Catagory>();
             Catagory newCatagory = new Catagory();

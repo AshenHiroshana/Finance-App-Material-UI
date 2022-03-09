@@ -57,6 +57,21 @@
                         Style="{StaticResource MaterialDesignOutlinedButton}"
                         Width="100"
                         Height="36"
+                        Margin="10,10,390,10" 
+                        HorizontalAlignment="Right"
+                        BorderBrush="#d9534f"
+                        Name="expenseDelete"
+                        Click="deleteExpenseItem"
+                        Visibility="Hidden"
+                        Foreground="#d9534f" >
+                    Delete
+
+                </Button>
+
+                <Button Grid.Row="4"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        Width="100"
+                        Height="36"
                         Margin="10,10,140,10" 
                         HorizontalAlignment="Right"
                         BorderBrush="#f0ad4e"
@@ -174,7 +189,7 @@
                 <StackPanel Name="selectedIcon" Orientation="Horizontal" Margin="0 0">
                     <materialDesign:PackIcon Kind="AddCircle" 
                                              Width="20" Height="20" 
-                                             Foreground="#5cb85c" Margin="400 0 0 11" 
+                                             Foreground="#5cb85c" Margin="450 0 0 11" 
                                              VerticalAlignment="Center"
                                              HorizontalAlignment="Left"/>
                 </StackPanel>
