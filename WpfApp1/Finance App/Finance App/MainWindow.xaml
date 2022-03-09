@@ -6,8 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Finance_App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1000"
-        MinHeight="450"
+        Title="MainWindow" Height="490" Width="1000"
+        MinHeight="490"
         MinWidth="1000"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None"
@@ -22,11 +22,11 @@
             <Grid>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="120"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
@@ -78,35 +78,30 @@
                         <ListView Name="menuList" SelectionChanged="ListView_SelectionChanged" Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
                             <ListViewItem IsSelected="True" Name="Home" Height="45" Padding="0">
                                     <StackPanel Orientation="Horizontal" Margin="10 0">
-                                        <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                                        <TextBlock Text="Recycle" Margin="10"/>
+                                        <materialDesign:PackIcon Kind="Home" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Home" Margin="10"/>
                                     </StackPanel>
                             </ListViewItem>
                             
                             <ListViewItem Name="Income" Height="45" Padding="0" >
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="HelpCircleOutline" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Help" Margin="10"/>
+                                    <materialDesign:PackIcon Kind="WalletAddOutline" Width="20" Height="20" Foreground="Green" Margin="5" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Income" Margin="10"/>
                                 </StackPanel>
                             </ListViewItem>
                             <ListViewItem Name="Expence" Height="45" Padding="0" Selected="Expences_Selected">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="Lightbulb" Width="20" Height="20" Foreground="Green" Margin="5" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Send Feedback" Margin="10"/>
+                                    <materialDesign:PackIcon Kind="Dollar" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Expense" Margin="10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="45" Padding="0">
+                            <ListViewItem Name="Prediction" Height="45" Padding="0">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="Heart" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Recommend" Margin="10"/>
+                                    <materialDesign:PackIcon Kind="Report" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Coming Month" Margin="10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="45" Padding="0">
-                                <StackPanel Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="StarCircle" Width="20" Height="20" Foreground="#FFE6A701" Margin="5" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Premium Subscription" Margin="10"/>
-                                </StackPanel>
-                            </ListViewItem>
+
                             <ListViewItem Height="45" Padding="0">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
                                     <materialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="#FF0069C1" Margin="5" VerticalAlignment="Center"/>

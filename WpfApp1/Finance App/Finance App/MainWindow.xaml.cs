@@ -37,6 +37,8 @@ namespace Finance_App
                 DataContext = new IncomeView();
             if (menuItem == "Expence")
                 DataContext = new ExpenseView();
+            if (menuItem == "Prediction")
+                DataContext = new PredictionView();
 
         }
 
@@ -137,6 +139,8 @@ namespace Finance_App
                     DataContext = new IncomeView();
                 if (menuItem == "Expence")
                     DataContext = new ExpenseView();
+                if (menuItem == "Prediction")
+                    DataContext = new PredictionView();
             }
         }
 
@@ -155,6 +159,8 @@ namespace Finance_App
                 DataContext = new IncomeView();
             if (menuItem == "Expence")
                 DataContext = new ExpenseView();
+            if (menuItem == "Prediction")
+                DataContext = new PredictionView();
 
         }
     }

@@ -31,3 +31,5 @@ C:\Users\Ashen\source\repos\Finance-App-Material-UI\WpfApp1\Finance App\Finance 
 C:\Users\Ashen\source\repos\Finance-App-Material-UI\WpfApp1\Finance App\Finance App\obj\Debug\net6.0-windows\Finance App.csproj.AssemblyReference.cache
 C:\Users\Ashen\source\repos\Finance-App-Material-UI\WpfApp1\Finance App\Finance App\obj\Debug\net6.0-windows\View\ExpenseView.g.cs
 C:\Users\Ashen\source\repos\Finance-App-Material-UI\WpfApp1\Finance App\Finance App\obj\Debug\net6.0-windows\View\ExpenseView.baml
+C:\Users\Ashen\source\repos\Finance-App-Material-UI\WpfApp1\Finance App\Finance App\obj\Debug\net6.0-windows\View\PredictionView.g.cs
+C:\Users\Ashen\source\repos\Finance-App-Material-UI\WpfApp1\Finance App\Finance App\obj\Debug\net6.0-windows\View\PredictionView.baml
