@@ -89,6 +89,7 @@ namespace Finance_App.View
                     incomeController.updateIncomeListToFile(updatedIncome, incomeTransaction);
                     updateIncomeList();
                     ClearIncomeForm();
+                    incomeDelete.Visibility = Visibility.Collapsed;
 
                 }
                 else
@@ -386,10 +387,23 @@ namespace Finance_App.View
         private void deleteIncomeItem(object sender, RoutedEventArgs e)
         {
 
-            incomeController.deleteIncomeFromFile(updatedIncome);
-            updateIncomeList();
-            ClearIncomeForm();
-            incomeDelete.Visibility = Visibility.Collapsed;
+
+            string message = "Are you sure to Delete Income ?";
+            string caption = "Delete";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+
+            MessageBoxResult messageBoxResult = MessageBox.Show(message, caption, buttons, icon);
+
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                incomeController.deleteIncomeFromFile(updatedIncome);
+                updateIncomeList();
+                ClearIncomeForm();
+                incomeDelete.Visibility = Visibility.Collapsed;
+            }
+           
 
         }
 

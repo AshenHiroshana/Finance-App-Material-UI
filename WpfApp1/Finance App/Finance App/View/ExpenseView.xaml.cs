@@ -88,7 +88,8 @@ namespace Finance_App.View
                     expenseController.updateExpenseListToFile(updatedExpense, expenseTransaction);
                     updateExpenseList();
                     ClearExpenseForm();
-                   
+                    expenseDelete.Visibility = Visibility.Collapsed;
+
 
                 }
                 else
@@ -96,7 +97,7 @@ namespace Finance_App.View
                     expenseController.addExpenseToFile(expenseTransaction);
                     updateExpenseList();
                     ClearExpenseForm();
-                    
+
                 }
 
 
@@ -382,10 +383,25 @@ namespace Finance_App.View
         private void deleteExpenseItem(object sender, RoutedEventArgs e)
         {
 
-            expenseController.deleteExpenseFromFile(updatedExpense);
-            updateExpenseList();
-            ClearExpenseForm();
-            expenseDelete.Visibility = Visibility.Collapsed;
+            
+            string message = "Are you sure to Delete Expense ?";
+            string caption = "Delete";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+
+            MessageBoxResult messageBoxResult = MessageBox.Show(message, caption, buttons, icon);
+
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                expenseController.deleteExpenseFromFile(updatedExpense);
+                updateExpenseList();
+                ClearExpenseForm();
+                expenseDelete.Visibility = Visibility.Collapsed;
+            }
+            
+
+            
 
         }
 
